@@ -1,0 +1,106 @@
+一 模块描述
+
+1 双L9110S芯片的电机驱动
+
+2 模块供电电压：2.5-12V
+
+3 适合的电机范围：电机工作电压2.5v-12V之间，最大工作电流0.8A，目前市面上的智能小车电压和电流都在此范围内
+
+4 可以同时驱动2个直流电机，或者1个4线2相式步进电机。
+
+5 PCB板尺寸：2.8cm*2.1cm 超小体积，适合组装
+
+6 设有固定安装孔，直径：3mm
+
+ 
+
+二 模块接口说明
+
+【6P黑色弯排针说明】
+
+1 VCC  外接2.5V-12V电压
+
+2 GND  外接GND
+
+3 IA1  外接单片机IO口
+
+4 IB1  外接单片机IO口
+
+5 IA2  外接单片机IO口
+
+6 IB2  外接单片机IO口
+
+【4P绿端子说明】
+
+   1 OA1 OB1 接直流电机2个引脚，无方向
+
+   2 OA2 OB2 接直流电机2个引脚，无方向
+
+ 
+
+三 模块使用说明 
+
+接通VCC，GND 模块电源指示灯亮  
+
+IA1输入高电平，IB1输入低电平，MOTOR A 电机正转；
+
+IA1输入低电平，IB1输入高电平，MOTOR A 电机反转；
+
+IA2输入高电平，IB2输入低电平，MOTOR B 电机正转；
+
+IA2输入低电平，IB2输入高电平，MOTOR B 电机反转；
+
+ 
+
+四 测试程序
+
+ int a1=17;
+int b1=11;
+int a2=10;
+int b2=12;
+int c1=7;
+int d1=5;
+int c2=8;
+int d2=6;
+void setup() 
+{
+pinMode(a1,OUTPUT);
+pinMode(a2,OUTPUT);
+pinMode(b1,OUTPUT);
+pinMode(b2,OUTPUT);
+pinMode(c1,OUTPUT);
+pinMode(c2,OUTPUT);
+pinMode(d1,OUTPUT);
+pinMode(d2,OUTPUT);
+
+}
+
+void loop() 
+{
+  for(char i=0;i<10;i++)
+  {
+    digitalWrite(a1,HIGH);
+    digitalWrite(a2,LOW);
+    digitalWrite(b1,HIGH);
+    digitalWrite(b2,LOW);
+    digitalWrite(c1,HIGH);
+    digitalWrite(c2,LOW);
+    digitalWrite(d1,HIGH);
+    digitalWrite(d2,LOW);
+    delay(50);
+  }
+   for(char i=0;i<10;i++)
+  {
+    digitalWrite(a1,LOW);
+    digitalWrite(a2,HIGH);
+    digitalWrite(b1,LOW);
+    digitalWrite(b2,HIGH);
+    
+     digitalWrite(c1,LOW);
+    digitalWrite(c2,HIGH);
+    digitalWrite(d1,LOW);
+    digitalWrite(d2,HIGH);
+    delay(50);
+  }
+  
+}
